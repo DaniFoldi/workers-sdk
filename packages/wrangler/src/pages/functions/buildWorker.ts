@@ -248,7 +248,6 @@ export function buildRawWorker({
 export async function traverseAndBuildWorkerJSDirectory({
 	workerJSDirectory,
 	buildOutputDirectory,
-	d1Databases,
 	nodejsCompat,
 }: {
 	workerJSDirectory: string;
