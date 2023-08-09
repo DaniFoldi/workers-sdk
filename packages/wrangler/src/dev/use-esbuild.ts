@@ -7,7 +7,7 @@ import { rewriteNodeCompatBuildFailure } from "../deployment-bundle/build-failur
 import { bundleWorker } from "../deployment-bundle/bundle";
 import { getBundleType } from "../deployment-bundle/bundle-type";
 import { dedupeModulesByName } from "../deployment-bundle/dedupe-modules";
-import findAdditionalModules from "../deployment-bundle/find-additional-modules";
+import { findAdditionalModules } from "../deployment-bundle/find-additional-modules";
 import {
 	createModuleCollector,
 	noopModuleCollector,

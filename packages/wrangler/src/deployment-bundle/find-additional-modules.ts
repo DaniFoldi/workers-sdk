@@ -30,7 +30,7 @@ async function getFiles(root: string, relativeTo: string): Promise<string[]> {
  * Search the filesystem under the `moduleRoot` of the `entry` for potential additional modules
  * that match the given `rules`.
  */
-export default async function findAdditionalModules(
+export async function findAdditionalModules(
 	entry: Entry,
 	rules: Rule[]
 ): Promise<CfModule[]> {

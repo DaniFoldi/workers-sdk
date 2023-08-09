@@ -4,7 +4,7 @@ import { join, resolve } from "node:path";
 import { build as esBuild } from "esbuild";
 import { nanoid } from "nanoid";
 import { bundleWorker } from "../../deployment-bundle/bundle";
-import findAdditionalModules from "../../deployment-bundle/find-additional-modules";
+import { findAdditionalModules } from "../../deployment-bundle/find-additional-modules";
 import {
 	createModuleCollector,
 	noopModuleCollector,

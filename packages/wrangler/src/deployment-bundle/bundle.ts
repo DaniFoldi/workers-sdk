@@ -15,6 +15,7 @@ import { getEntryPointFromMetafile } from "./entry-point-from-metafile";
 import { cloudflareInternalPlugin } from "./esbuild-plugins/cloudflare-internal";
 import { configProviderPlugin } from "./esbuild-plugins/config-provider";
 import { nodejsCompatPlugin } from "./esbuild-plugins/nodejs-compat";
+import { findAdditionalModules as doFindAdditionalModules } from "./find-additional-modules";
 import { noopModuleCollector } from "./module-collection";
 import type { Config } from "../config";
 import type { DurableObjectBindings } from "../config/environment";
@@ -96,6 +97,8 @@ export async function bundleWorker(
 		bundle,
 		moduleCollector = noopModuleCollector,
 		additionalModules = [],
+		findAdditionalModules,
+		rules,
 		serveAssetsFromWorker,
 		doBindings,
 		jsxFactory,
@@ -257,6 +260,13 @@ export async function bundleWorker(
 
 	let result;
 	try {
+		if (findAdditionalModules) {
+			additionalModules = dedupeModulesByName([
+				...additionalModules,
+				...(await doFindAdditionalModules(entry, rules)),
+			]);
+		}
+
 		result = await esbuild.build({
 			// Don't use entryFile here as the file may have been changed when applying the middleware
 			entryPoints: [entry.file],
