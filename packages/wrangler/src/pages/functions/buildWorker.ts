@@ -262,7 +262,6 @@ export async function traverseAndBuildWorkerJSDirectory({
 }: {
 	workerJSDirectory: string;
 	buildOutputDirectory: string;
-	d1Databases?: string[];
 	nodejsCompat?: boolean;
 }): Promise<BundleResult> {
 	const entrypoint = resolve(join(workerJSDirectory, "index.js"));

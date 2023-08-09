@@ -157,11 +157,6 @@ export async function deploy({
 	// Routing configuration displayed in the Functions tab of a deployment in Dash
 	let filepathRoutingConfig: string | undefined;
 
-	const d1Databases = Object.keys(
-		project.deployment_configs[isProduction ? "production" : "preview"]
-			.d1_databases ?? {}
-	);
-
 	if (!_workerJS && existsSync(functionsDirectory)) {
 		const outputConfigPath = join(
 			tmpdir(),
@@ -176,7 +171,6 @@ export async function deploy({
 				buildOutputDirectory: directory,
 				routesOutputPath,
 				local: false,
-				d1Databases,
 				nodejsCompat,
 			});
 
@@ -254,7 +248,6 @@ export async function deploy({
 		workerBundle = await traverseAndBuildWorkerJSDirectory({
 			workerJSDirectory: _workerPath,
 			buildOutputDirectory: directory,
-			d1Databases,
 			nodejsCompat,
 		});
 	} else if (_workerJS) {
