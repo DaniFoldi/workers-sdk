@@ -1,5 +1,11 @@
 # create-cloudflare
 
+## 2.1.1
+
+### Patch Changes
+
+- [#3729](https://github.com/cloudflare/workers-sdk/pull/3729) [`9d8509e0`](https://github.com/cloudflare/workers-sdk/commit/9d8509e08acf082604ca896b4ab9ad5c05ae7505) Thanks [@jculvey](https://github.com/jculvey)! - Improve experience for WARP users by improving the reliability of the polling logic that waits for newly created apps to become available.
+
 ## 2.1.0
 
 ### Minor Changes
