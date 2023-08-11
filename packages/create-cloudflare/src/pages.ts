@@ -162,7 +162,7 @@ const createProject = async (ctx: PagesGeneratorContext) => {
 	try {
 		await retry(CREATE_PROJECT_RETRIES, async () =>
 			runCommand(cmd, {
-				silent: true,
+				silent: false,
 				cwd: ctx.project.path,
 				env: { CLOUDFLARE_ACCOUNT_ID },
 				startText: "Creating Pages project",
